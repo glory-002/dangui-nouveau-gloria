@@ -7,6 +7,7 @@ import pandas as pd
 from gui import Ui_MainWindow
 from load import LoadData
 from plots import PlotWindow
+from calcs import CalcData
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton
 from PyQt6 import QtCore
@@ -22,6 +23,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.selectDataButton.clicked.connect(self.selectButtonPushed)
         self.loadDataButton.clicked.connect(self.loadButtonPushed)
         self.setDataButton.clicked.connect(self.setButtonPushed)
+        self.setPropertiesButton.clicked.connect(self.setPropertiesButtonPushed)
         self.sensorList.itemClicked.connect(self.sensorListPushed)
         self.sensorList.itemDoubleClicked.connect(self.sensorListDoubleClicked)
 
@@ -37,6 +39,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def sensorListPushed(self, clickedItem):
         LoadData.plotSensors(self, clickedItem)
+
+    def setPropertiesButtonPushed(self, clickedItem):
+        CalcData.hmmm(self, clickedItem)
 
     def sensorListDoubleClicked(self, clickedItem):
         times, data, title = LoadData.matplotSensors(self, clickedItem)
