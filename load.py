@@ -49,6 +49,8 @@ class LoadData(QMainWindow, Ui_MainWindow):
         else:
             self.filenameText.setText("File does not exist!")
 
+        return headers
+
     def setData(self):
         global times, data
         tzero = self.tZero.value()
@@ -65,9 +67,9 @@ class LoadData(QMainWindow, Ui_MainWindow):
         times = times - tzero
 
         data = data.reset_index(drop=True)
-        print(data[lastclickedplot])
+        # print(data[lastclickedplot])
         times = times.reset_index(drop=True)
-        print(times)
+        # print(times)
 
         self.tZero.setValue(tzero - tzero)
         self.tStart.setValue(tstart - tzero)
@@ -76,6 +78,10 @@ class LoadData(QMainWindow, Ui_MainWindow):
         if lastclickedplot != "<plot>":
             self.centralPlot.clear()
             self.centralPlot.plot(times, data[lastclickedplot])
+
+        print('DATA HAS BEEN SET')
+
+        return data
     
     def plotSensors(self, clickedItem):
         global lastclickedplot 

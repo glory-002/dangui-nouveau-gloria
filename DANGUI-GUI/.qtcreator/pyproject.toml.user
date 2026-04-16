@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 18.0.2, 2026-02-05T04:03:55. -->
+<!-- Written by QtCreator 18.0.2, 2026-04-16T00:09:32. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{b348f16c-1cbf-4566-8ef1-12b72e47bbc5}</value>
+  <value type="QByteArray">{7ee32c7a-b759-434e-98cc-61c7ca4a54a4}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -79,7 +79,7 @@
     <value type="bool" key="ClangTools.AnalyzeOpenFiles">true</value>
     <value type="bool" key="ClangTools.BuildBeforeAnalysis">true</value>
     <value type="QString" key="ClangTools.DiagnosticConfig">Builtin.DefaultTidyAndClazy</value>
-    <value type="int" key="ClangTools.ParallelJobs">6</value>
+    <value type="int" key="ClangTools.ParallelJobs">4</value>
     <value type="bool" key="ClangTools.PreferConfigFile">true</value>
     <valuelist type="QVariantList" key="ClangTools.SelectedDirs"/>
     <valuelist type="QVariantList" key="ClangTools.SelectedFiles"/>
@@ -94,14 +94,14 @@
   <valuemap type="QVariantMap">
    <value type="QString" key="DeviceType">Desktop</value>
    <value type="bool" key="HasPerBcDcs">true</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Python 3.13.5</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Python 3.13.5</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{4003615e-9e6e-45a8-a3ff-fb89d2a366eb}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Python 3.13.9</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Python 3.13.9</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{fd35f9e4-aca2-4fb4-a47d-b35e47ae155d}</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\jsta9\Documents\Tech\6_Spring_2026\10_YJSP\DANGUI-Nouveau\DANGUI-GUI\.qtcreator\Python_3_13_5venv</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\hsiag\Desktop\gatech\yjsp\DANGUI\dangui-nouveau-gloria\DANGUI-GUI\.qtcreator\Python_3_13_9venv</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -123,7 +123,7 @@
     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.CustomParsers"/>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ParseStandardOutput">false</value>
     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Python 3.13.5 Virtual Environment</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Python 3.13.9 Virtual Environment</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Python.PySideBuildConfiguration</value>
     <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
     <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
@@ -152,18 +152,17 @@
      <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">widget.py</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.</value>
-     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/jsta9/Documents/Tech/6_Spring_2026/10_YJSP/DANGUI-Nouveau/DANGUI-GUI/widget.py</value>
-     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/hsiag/Desktop/gatech/yjsp/DANGUI/dangui-nouveau-gloria/DANGUI-GUI/widget.py</value>
+     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
      <value type="QString" key="ProjectExplorer.RunConfiguration.UniqueId"></value>
-     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\jsta9\Documents\Tech\6_Spring_2026\10_YJSP\DANGUI-Nouveau\DANGUI-GUI\widget.py</value>
+     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\hsiag\Desktop\gatech\yjsp\DANGUI\dangui-nouveau-gloria\DANGUI-GUI\widget.py</value>
      <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
      <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/jsta9/Documents/Tech/6_Spring_2026/10_YJSP/DANGUI-Nouveau/DANGUI-GUI</value>
-     <value type="QString" key="RunConfiguration.X11Forwarding">:0.0</value>
+     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/hsiag/Desktop/gatech/yjsp/DANGUI/dangui-nouveau-gloria/DANGUI-GUI</value>
     </valuemap>
     <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
-    <value type="QString" key="python">C:/Users/jsta9/Documents/Tech/6_Spring_2026/10_YJSP/DANGUI-Nouveau/DANGUI-GUI/.qtcreator/Python_3_13_5venv/Scripts/python.exe</value>
-    <value type="QString" key="venv">C:/Users/jsta9/Documents/Tech/6_Spring_2026/10_YJSP/DANGUI-Nouveau/DANGUI-GUI/.qtcreator/Python_3_13_5venv</value>
+    <value type="QString" key="python">C:/Users/hsiag/Desktop/gatech/yjsp/DANGUI/dangui-nouveau-gloria/DANGUI-GUI/.qtcreator/Python_3_13_9venv/Scripts/python.exe</value>
+    <value type="QString" key="venv">C:/Users/hsiag/Desktop/gatech/yjsp/DANGUI/dangui-nouveau-gloria/DANGUI-GUI/.qtcreator/Python_3_13_9venv</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.BuildConfigurationCount">1</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.DeployConfiguration.0">
@@ -191,14 +190,13 @@
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">widget.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/jsta9/Documents/Tech/6_Spring_2026/10_YJSP/DANGUI-Nouveau/DANGUI-GUI/widget.py</value>
-    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/hsiag/Desktop/gatech/yjsp/DANGUI/dangui-nouveau-gloria/DANGUI-GUI/widget.py</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.UniqueId"></value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\jsta9\Documents\Tech\6_Spring_2026\10_YJSP\DANGUI-Nouveau\DANGUI-GUI\widget.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\hsiag\Desktop\gatech\yjsp\DANGUI\dangui-nouveau-gloria\DANGUI-GUI\widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/jsta9/Documents/Tech/6_Spring_2026/10_YJSP/DANGUI-Nouveau/DANGUI-GUI</value>
-    <value type="QString" key="RunConfiguration.X11Forwarding">:0.0</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/hsiag/Desktop/gatech/yjsp/DANGUI/dangui-nouveau-gloria/DANGUI-GUI</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
