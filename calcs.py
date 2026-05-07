@@ -1,0 +1,116 @@
+import numpy as np
+
+from gui import Ui_MainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton
+
+class DataCalcs(QMainWindow, Ui_MainWindow):
+
+    def updateDensity(self):
+        self.loxRhoBox.setPlaceholderText(self.loxDensity.toPlainText())
+        self.fuelRhoBox.setPlaceholderText(self.fuelDensity.toPlainText())
+
+    def getData(self):
+
+        self.loxRhoBox.setPlaceholderText(self.loxDensity.toPlainText())
+        self.fuelRhoBox.setPlaceholderText(self.fuelDensity.toPlainText())
+
+        # getting values for automatic equations 
+            # sys and inj mdots
+        self.loxp1 = self.findData('OIPT(psi)') # 'loxp1' contains a header, loxp1 is a numpy array of corresponding values
+        self.loxp2 = self.findData('CHPT1(psi)') 
+        self.fuelp1 = self.findData('OIPT(psi)')
+        self.fuelp2 = self.findData('CHPT1(psi)')
+        self.ODP = self.findData('ODP(psi)')
+
+        self.OTPT = self.findData('OTPT(psi)')
+        self.OIPT = self.findData('OIPT(psi)')
+        self.CHPT = self.findData('CHPT1(psi)')
+
+        self.loxSysCda = float(self.loxSysBox.toPlainText())
+        self.loxInjCda = float(self.loxInjBox.toPlainText())
+        self.loxRho = float(self.loxDensity.toPlainText())
+        self.loxVenCda = float(self.loxVenBox.toPlainText())
+
+        self.fuelSysCda = float(self.fuelSysBox.toPlainText())
+        self.fuelInjCda = float(self.fuelInjBox.toPlainText())
+        self.fuelRho = float(self.fuelDensity.toPlainText())
+
+        # getting values for custom equations
+        self.loxp1Cus = self.findData(self.loxDP1Combo.currentText())
+        self.loxp2Cus = self.findData(self.loxDP2Combo.currentText())
+
+        self.fuelp1Cus = self.findData(self.fuelDP1Combo.currentText())
+        self.fuelp2Cus = self.findData(self.fuelDP2Combo.currentText())
+
+        if self.loxSysCdACombo.currentText() == 'InjCdA':
+            self.loxCusCda = float(self.loxInjBox.toPlainText())
+        else: # SysCdA
+            self.loxCusCda = float(self.loxSysBox.toPlainText())
+
+        if self.fuelSysCdACombo.currentText() == 'InjCdA':
+            self.fuelCusCda = float(self.fuelInjBox.toPlainText())
+        else: # SysCdA
+            self.fuelCusCda = float(self.fuelSysBox.toPlainText())
+  
+
+    def solver(self):
+        inlet_ID = 0.844 # in
+        throat_ID = 0.4375 # in
+        inlet_ID2 = np.power(inlet_ID / 39.37 / 2, 2) # pre-processing inletID value
+        throat_ID2 = np.power(throat_ID / 39.37 / 2, 2) # pre-processing throatID value
+
+        # calculating Mdots
+        self.loxSysMdot = self.loxSysCda/100**2 * np.sqrt(2* self.loxRho * np.abs(self.loxp1-self.loxp2)*6895) #
+        self.loxInjMdot = self.loxInjCda/100**2 * np.sqrt(2* self.loxRho * np.abs(self.loxp1-self.loxp2)*6895) #
+        self.loxVenMdot = self.loxVenCda*np.pi*inlet_ID2 * np.sqrt(2*self.loxRho* np.abs(self.ODP)*6895 / (np.power(inlet_ID2 / (np.pi*throat_ID2), 2) -1)) # kg/s, Bernoulli's Principle
+        
+        self.fuelSysMdot = self.fuelSysCda/100**2 * np.sqrt(2* self.fuelRho * np.abs(self.fuelp1-self.fuelp2)*6895) #
+        self.fuelInjMdot = self.fuelInjCda/100**2 * np.sqrt(2* self.fuelRho * np.abs(self.fuelp1-self.fuelp2)*6895) #
+            # these lowk may be a factor of 10 off
+
+        # calculating and setting average values
+        # TODO figure out how the averaging works for MATLAB
+        self.loxMdotSysAvg.setText(str(round(np.average(self.loxSysMdot),3)))
+        self.loxMdotInjAvg.setText(str(round(np.average(self.loxInjMdot),3)))
+        self.loxMdotVenAvg.setText(str(round(np.average(self.loxVenMdot),3)))
+        
+        self.fuelMdotSysAvg.setText(str(round(np.average(self.fuelSysMdot),3)))
+        self.fuelMdotInjAvg.setText(str(round(np.average(self.fuelInjMdot),3)))
+
+
+        # calculating CdAs
+        # can throw these equations into a helper function if needed
+        self.loxSysCdaInj = self.loxInjMdot / (np.sqrt(2*self.loxRho * np.abs((self.OTPT-self.OIPT)+1)*6895))*100**2 # cm^2, Sys CdA using venturi Mdot and pressure drop across system
+        self.loxSysCdaVen = self.loxVenMdot / (np.sqrt(2*self.loxRho * np.abs((self.OTPT-self.OIPT)+1)*6895))*100**2 # cm^2, Sys CdA using Mdot from injector and pressure drop across system 
+        self.loxInjCdaSys = self.loxSysMdot / (np.sqrt(2*self.loxRho * np.abs((self.OTPT-self.OIPT)+1)*6895))*100**2
+        self.loxInjCdaVen = self.loxInjMdot / (np.sqrt(2*self.loxRho * np.abs((self.OTPT-self.OIPT)+1)*6895))*100**2
+
+        # calculating and setting average values
+        self.loxSysCdaInjAvg.setText(str(round(np.average(self.loxSysCdaInj),3))) 
+        self.loxSysCdaVenAvg.setText(str(round(np.average(self.loxSysCdaVen),3))) 
+        self.loxInjCdaSysAvg.setText(str(round(np.average(self.loxInjCdaSys),3))) 
+        self.loxInjCdaVenAvg.setText(str(round(np.average(self.loxInjCdaVen),3))) 
+
+        # set internally for future calcs
+        self.loxInjMdot = self.loxInjCdaSys / 100**2 * np.sqrt(2*self.loxRho*np.abs(self.OIPT-self.CHPT)*6895)
+
+        # custom equations
+        if self.loxGraphCheck.isChecked() or self.loxAppendCheck.isChecked():
+            
+            self.loxCusMdot = self.loxCusCda/100**2 * np.sqrt(2* self.loxRho * np.abs(self.loxp1Cus-self.loxp2Cus)*6895)
+            self.fuelCusMdot = self.fuelCusCda/100**2 * np.sqrt(2* self.fuelRho * np.abs(self.loxp1Cus-self.loxp2Cus)*6895)
+
+            print('SUCCESSFUL CUSTOM CALCS')
+
+        print("SUCCESSFUL CALCS")
+
+        
+
+        # np.savetxt("loxSysMdotPython.csv", loxSysMdot, delimiter=",")
+
+
+# TODO
+    # create a clean version of outputs + appended to a copy of input file
+        # DO NOT CORRUPT ORIGINAL FILE
+    # VERIFY CALCULATIONS
+        # figure out what the densities are for MATLAB version so you can check if they line up
